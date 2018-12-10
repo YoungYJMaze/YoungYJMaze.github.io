@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ros on Young&#39;s Blog</title>
+    <link>https://YoungYJMaze.github.io/tags/ros/</link>
+    <description>Recent content in Ros on Young&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Dec 2018 23:15:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://YoungYJMaze.github.io/tags/ros/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>这几天在无人机配置方面遇到的问题</title>
+      <link>https://YoungYJMaze.github.io/notes/%E8%BF%99%E5%87%A0%E5%A4%A9%E5%9C%A8%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%85%8D%E7%BD%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sun, 09 Dec 2018 23:15:05 +0800</pubDate>
+      
+      <guid>https://YoungYJMaze.github.io/notes/%E8%BF%99%E5%87%A0%E5%A4%A9%E5%9C%A8%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%85%8D%E7%BD%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>本人debian9系统，以下均为本系统下操作
+cannot find -lQt5::Widgets 遇到这种问题需要在CMakeLists.txt 中 find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets) find_package(Qt5Widgets REQUIRED) 找到QT5所需控件的位置，问题即可解决
+这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。 善用搜索引擎真的可以事半功倍！
+MYNTEYE_SDK_ROOT environment variable not found. 提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是
+cd ~ vim .bashrc  在最下面添加 export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”
+同时测试VINS-Sample 和 SDK时 要注意切换运行的脚本
+在MYNT-EYE-VINS-Sample 文档中是：
+source devel/setup.bash (当前文件夹为/catkin_ws)  在SDK中却是
+source wrappers/ros/devel/setup.bash  开始跑MYNT-EYE-VINS-Sample时 Run VINS-Mono with MYNT EYE camera cd ~/catkin_ws source devel/setup.bash roslaunch mynt_eye_ros_wrapper mynteye.launch roslaunch vins_estimator mynteye.launch 这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Young&#39;s Blog  | 这几天在无人机配置方面遇到的问题</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.51" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="这几天在无人机配置方面遇到的问题" />
+<meta property="og:description" content="本人debian9系统，以下均为本系统下操作
+cannot find -lQt5::Widgets 遇到这种问题需要在CMakeLists.txt 中 find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets) find_package(Qt5Widgets REQUIRED) 找到QT5所需控件的位置，问题即可解决
+这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。 善用搜索引擎真的可以事半功倍！
+MYNTEYE_SDK_ROOT environment variable not found. 提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是
+cd ~ vim .bashrc  在最下面添加 export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”
+同时测试VINS-Sample 和 SDK时 要注意切换运行的脚本
+在MYNT-EYE-VINS-Sample 文档中是：
+source devel/setup.bash (当前文件夹为/catkin_ws)  在SDK中却是
+source wrappers/ros/devel/setup.bash  开始跑MYNT-EYE-VINS-Sample时 Run VINS-Mono with MYNT EYE camera cd ~/catkin_ws source devel/setup.bash roslaunch mynt_eye_ros_wrapper mynteye.launch roslaunch vins_estimator mynteye.launch 这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://YoungYJMaze.github.io/notes/%E8%BF%99%E5%87%A0%E5%A4%A9%E5%9C%A8%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%85%8D%E7%BD%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" /><meta property="article:published_time" content="2018-12-09T23:15:05&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-09T23:15:05&#43;08:00"/>
+
+<meta itemprop="name" content="这几天在无人机配置方面遇到的问题">
+<meta itemprop="description" content="本人debian9系统，以下均为本系统下操作
+cannot find -lQt5::Widgets 遇到这种问题需要在CMakeLists.txt 中 find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets) find_package(Qt5Widgets REQUIRED) 找到QT5所需控件的位置，问题即可解决
+这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。 善用搜索引擎真的可以事半功倍！
+MYNTEYE_SDK_ROOT environment variable not found. 提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是
+cd ~ vim .bashrc  在最下面添加 export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”
+同时测试VINS-Sample 和 SDK时 要注意切换运行的脚本
+在MYNT-EYE-VINS-Sample 文档中是：
+source devel/setup.bash (当前文件夹为/catkin_ws)  在SDK中却是
+source wrappers/ros/devel/setup.bash  开始跑MYNT-EYE-VINS-Sample时 Run VINS-Mono with MYNT EYE camera cd ~/catkin_ws source devel/setup.bash roslaunch mynt_eye_ros_wrapper mynteye.launch roslaunch vins_estimator mynteye.launch 这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。">
+
+
+<meta itemprop="datePublished" content="2018-12-09T23:15:05&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-09T23:15:05&#43;08:00" />
+<meta itemprop="wordCount" content="63">
+
+
+
+<meta itemprop="keywords" content="ROS,ORB_SLAM2,VINS," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="这几天在无人机配置方面遇到的问题"/>
+<meta name="twitter:description" content="本人debian9系统，以下均为本系统下操作
+cannot find -lQt5::Widgets 遇到这种问题需要在CMakeLists.txt 中 find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets) find_package(Qt5Widgets REQUIRED) 找到QT5所需控件的位置，问题即可解决
+这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。 善用搜索引擎真的可以事半功倍！
+MYNTEYE_SDK_ROOT environment variable not found. 提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是
+cd ~ vim .bashrc  在最下面添加 export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”
+同时测试VINS-Sample 和 SDK时 要注意切换运行的脚本
+在MYNT-EYE-VINS-Sample 文档中是：
+source devel/setup.bash (当前文件夹为/catkin_ws)  在SDK中却是
+source wrappers/ros/devel/setup.bash  开始跑MYNT-EYE-VINS-Sample时 Run VINS-Mono with MYNT EYE camera cd ~/catkin_ws source devel/setup.bash roslaunch mynt_eye_ros_wrapper mynteye.launch roslaunch vins_estimator mynteye.launch 这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://YoungYJMaze.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
+      Young&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/notes/" title="笔记 page">
+              笔记
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/essay/" title="想法 page">
+              想法
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        笔记
+      </p>
+      <h1 class="f1 athelas mb1">这几天在无人机配置方面遇到的问题</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2018-12-09T23:15:05&#43;08:00">December 9, 2018</time>      
+      
+      
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>本人debian9系统，以下均为本系统下操作</p>
+
+<h3 id="cannot-find-lqt5-widgets">cannot find -lQt5::Widgets</h3>
+
+<p>遇到这种问题需要在CMakeLists.txt 中
+    find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets)
+    find_package(Qt5Widgets REQUIRED)
+找到QT5所需控件的位置，问题即可解决</p>
+
+<p>这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。
+善用搜索引擎真的可以事半功倍！</p>
+
+<h3 id="mynteye-sdk-root-environment-variable-not-found">MYNTEYE_SDK_ROOT environment variable not found.</h3>
+
+<p>提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是</p>
+
+<pre><code>cd ~
+vim .bashrc
+</code></pre>
+
+<p>在最下面添加
+    export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”</p>
+
+<h3 id="同时测试vins-sample-和-sdk时">同时测试VINS-Sample 和 SDK时</h3>
+
+<p>要注意切换运行的脚本</p>
+
+<p>在MYNT-EYE-VINS-Sample 文档中是：</p>
+
+<pre><code>source devel/setup.bash (当前文件夹为/catkin_ws)
+</code></pre>
+
+<p>在SDK中却是</p>
+
+<pre><code>source wrappers/ros/devel/setup.bash
+</code></pre>
+
+<h3 id="开始跑mynt-eye-vins-sample时">开始跑MYNT-EYE-VINS-Sample时</h3>
+
+<p>Run VINS-Mono with MYNT EYE camera
+    cd ~/catkin_ws
+    source devel/setup.bash
+    roslaunch mynt_eye_ros_wrapper mynteye.launch
+    roslaunch vins_estimator mynteye.launch
+这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/ros" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">ROS</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/orb_slam2" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">ORB_SLAM2</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/vins" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">VINS</a>
+   </li>
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://YoungYJMaze.github.io" >
+    &copy; 2018 Young&#39;s Blog
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

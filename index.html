@@ -35,7 +35,7 @@
 <meta property="og:description" content="欢迎来到我的博客，希望你能喜欢。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://YoungYJMaze.github.io/" />
-<meta property="og:updated_time" content="2018-11-17T13:05:30&#43;08:00"/>
+<meta property="og:updated_time" content="2018-12-09T23:15:05&#43;08:00"/>
 
 <meta itemprop="name" content="Young&#39;s Blog">
 <meta itemprop="description" content="欢迎来到我的博客，希望你能喜欢。">
@@ -148,21 +148,22 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/notes/flask%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="color-inherit dim link">
-            Flask中遇到的问题
+          <a href="/notes/%E8%BF%99%E5%87%A0%E5%A4%A9%E5%9C%A8%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%85%8D%E7%BD%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="color-inherit dim link">
+            这几天在无人机配置方面遇到的问题
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-           1.虚拟环境下默认环境为python2 但是python2对于python文件运行的默认编码不是utf-8，会提示以下错误：
-SyntaxError: Non-ASCII character '\xe8' in file /home/yang/gitdata/flasky/app/models.py on line 335, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details  这时需要在文件开头加上
-# -*- coding: UTF-8 -*-
-来使python解释器按 utf-8 进行解释
-另一种一劳永逸的方式
-在python的lib/site-packages文件夹下新建一个sitecustomize.py文件 （或者直接在python文件夹下寻找这个文件，笔者是这样做的，笔者系统debian自带的python2.7）
-在其中加入以下代码：
-# encoding=utf-8 import sys reload(sys) sys.setdefaultencoding('utf-8')  
+          本人debian9系统，以下均为本系统下操作
+cannot find -lQt5::Widgets 遇到这种问题需要在CMakeLists.txt 中 find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED Core Widgets) find_package(Qt5Widgets REQUIRED) 找到QT5所需控件的位置，问题即可解决
+这几天要被各种依赖关系和各种软件的配置需求整疯掉了，今后一定要认真看错误提示，不能看到英文就头大。 善用搜索引擎真的可以事半功倍！
+MYNTEYE_SDK_ROOT environment variable not found. 提示MYNTEYE_SDK_ROOT 这个环境变量不存在， 最简单的方法就是
+cd ~ vim .bashrc  在最下面添加 export MYNTEYE_SDK_ROOT=“你的实际MYNTEYESDK所在的绝对路径”
+同时测试VINS-Sample 和 SDK时 要注意切换运行的脚本
+在MYNT-EYE-VINS-Sample 文档中是：
+source devel/setup.bash (当前文件夹为/catkin_ws)  在SDK中却是
+source wrappers/ros/devel/setup.bash  开始跑MYNT-EYE-VINS-Sample时 Run VINS-Mono with MYNT EYE camera cd ~/catkin_ws source devel/setup.bash roslaunch mynt_eye_ros_wrapper mynteye.launch roslaunch vins_estimator mynteye.launch 这四条语句都需要进行，缺少第三条，则节点没有初始化，VINS 没有图像输入。
         </div>
-          <a href="/notes/flask%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/notes/%E8%BF%99%E5%87%A0%E5%A4%A9%E5%9C%A8%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%85%8D%E7%BD%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -179,20 +180,14 @@ SyntaxError: Non-ASCII character '\xe8' in file /home/yang/gitdata/flasky/app/mo
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/notes/godaddy%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/" class="color-inherit dim link">
-            Godaddy无法登录
+          <a href="/notes/%E6%8F%90%E9%AB%98githubclone%E9%80%9F%E5%BA%A6/" class="color-inherit dim link">
+            提高GithubClone速度
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Godaddy 无法登录 今天准备管理域名的时候忽然发现godady的导航栏和登录按钮都无法点击，查阅网上的相关问题解答之后看到有朋友说是cookies被拒绝云云，我看到这里想到清除cookies 会不会有什么效果呢,于是在firefox上进行相关操作，结果发现没有效果，这是看到有回答建议说在浏览器的无痕浏览模式下试试，我看firefox上面有提示：
-When you browse in a Private Window, Firefox does not save:
- visited pages
- cookies
- searches
- temporary files
-  于是开始尝试，果然有效果，但是有时候好像无果，原因目前还不知道，并且在godaddy的英文浏览下仿佛成功率更大一些，方法就是把域名里的zh替换成en
+          
         </div>
-          <a href="/notes/godaddy%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/notes/%E6%8F%90%E9%AB%98githubclone%E9%80%9F%E5%BA%A6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -207,6 +202,18 @@ When you browse in a Private Window, Firefox does not save:
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/notes/flask%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="link black dim">
+              Flask中遇到的问题
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/notes/godaddy%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/" class="link black dim">
+              Godaddy无法登录
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/notes/%E8%A7%A3%E5%86%B3debian%E7%B3%BB%E7%BB%9Fpython%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/" class="link black dim">
